@@ -12,21 +12,27 @@ public class Livre implements Document {
 
 	@Override
 	public void reserver(Abonne ab) throws PasLibreException {
-		if (this.abo == null)
-			throw new PasLibreException();
-		this.abo = ab;
+		synchronized (this) {
+			if (this.abo == null)
+				throw new PasLibreException();
+			this.abo = ab;
+		}
 	}
 
 	@Override
 	public void emprunter(Abonne ab) throws PasLibreException {
-		if (this.abo == null)
-			throw new PasLibreException();
-		this.abo = ab;
+		synchronized (this) {
+			if (this.abo == null)
+				throw new PasLibreException();
+			this.abo = ab;
+		}
 	}
 
 	@Override
 	public void rendreDispo() {
-		this.abo = null;
+		synchronized (this) {
+			this.abo = null;
+		}
 	}
 
 }
