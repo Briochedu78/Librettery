@@ -1,7 +1,11 @@
 package librettery;
 
 public class PasLibreException extends Exception {
-	public PasLibreException () {
+	public PasLibreException (String string) {
+		super(string);
+	}
+	
+	public PasLibreException(){
 		super();
 	}
 }
