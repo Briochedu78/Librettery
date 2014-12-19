@@ -10,8 +10,25 @@ public class Appli {
 	public static void main(String args[]) {
 		Socket s = null;
 		Scanner sc = new Scanner(System.in);
-		int port = sc.nextInt();
-		String host = sc.next();
+		int port;
+		String line = sc.nextLine(), type;
+		boolean continuer = true;
+		while(true){
+			System.out.print("Saisissez emprunt pour un emprunt et retour pour un retour : ");
+			if(line.equals("emprunt")){
+				type = line;
+				port = 2600;
+				break;
+			}
+			else if(line.equals("retour")){
+				type = line;
+				port = 2700;
+				break;
+			}
+		}
+
+		System.out.print("Entrez l'ip du serveur : ");
+		String host = sc.nextLine();
 		
 		try {
 			s = new Socket(host, port);
@@ -23,18 +40,15 @@ public class Appli {
 
 			System.out.println("Connecté au serveur " + s.getInetAddress() + ":"+ s.getPort());
 			
-			String line, type;
 			Integer numAbo, numDoc;
-			while(true) {
-				System.out.println("Saisissez emprunt pour un emprunt et retour pour un retour");
+			
+			while(continuer) {
+				
 				System.out.print("> ");
 				System.out.flush();
 				line = clavier.readLine();
 				if(line == null)
 					break;
-				
-				type = line;
-				
 				
 				System.out.println("Veuillez entrer votre numero d'abonne");
 				System.out.print("> ");
@@ -51,6 +65,7 @@ public class Appli {
 				line = clavier.readLine();
 				if (line == null)
 					break;
+				
 				numDoc = Integer.parseInt(line);
 				
 				

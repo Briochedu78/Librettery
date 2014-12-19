@@ -12,7 +12,9 @@ class Appli {
 	public static void main(String args[]) {
 		Socket s = null;
 		Scanner sc = new Scanner(System.in);
-		int port = sc.nextInt();
+		int port = 2500;
+		
+		System.out.println("Entrez l'ip du serveur : ");
 		String host = sc.next();
 		
 		try {
