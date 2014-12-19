@@ -26,7 +26,7 @@ class Appli {
 			System.out.println("Connecté au serveur " + s.getInetAddress() + ":"+ s.getPort());
 			
 			String line;
-			int numAbo, numDoc;
+			Integer numAbo, numDoc;
 			while(true) {
 				System.out.println("Veuillez entrer votre numero d'abonne");
 				System.out.print("> ");
@@ -38,30 +38,29 @@ class Appli {
 				numAbo = Integer.parseInt(line);
 				
 				System.out.flush();
+				System.out.println("Veuillez entrer le numero de document");
+				System.out.print("> ");
 				line = clavier.readLine();
-				if (line == null) 
+				if (line == null)
 					break;
+				numDoc = Integer.parseInt(line);
 				
 				
-				sout.println(line);
+				sout.println(numDoc.toString() + " " + numAbo.toString());
 				
-				// lit la réponse provenant du serveur
 				line = sin.readLine();
 				
-				// Verifie si la connection est fermee.
-				// Si oui on sort de la boucle
 				if (line == null) { 
 					System.out.println("Connection fermee par le serveur."); 
 					break;
 				}
 				
-				// Ecrit la ligne envoyee par le serveur
 				System.out.println(line);
+				break;
 			}
 		}
 		catch (IOException e) { System.err.println(e); }
 		
-		// Refermer dans tous les cas la socket
 		try { if (s != null) s.close(); } 
 		catch (IOException e2) { ; }		
 	}
