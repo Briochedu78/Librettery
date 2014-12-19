@@ -2,7 +2,7 @@ package librettery;
 
 public interface Document {
 	int numero();
-	void reserver(Abonne ab);
-	void emprunter(Abonne ab);
+	void reserver(Abonne ab) throws PasLibreException;
+	void emprunter(Abonne ab) throws PasLibreException;
 	void rendreDispo();
 }
