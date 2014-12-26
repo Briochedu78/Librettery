@@ -9,7 +9,6 @@ public class ServeurEmprunt implements Runnable {
 		listen_socket = new ServerSocket(port);
 	}
 
-	@Override
 	public void run() {
 		try {
 			while(true)
