@@ -3,8 +3,8 @@ import java.io.IOException;
 
 public class Appli {
 	private static int portReservation = 2500,
-				portEmprunt = 2600,
-				portRetour = 2700;
+					   portEmprunt = 2600,
+					   portRetour = 2700;
 	
 	
 	
