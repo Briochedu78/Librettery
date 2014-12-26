@@ -7,7 +7,7 @@ public class Librettery {
 	private static Map<Integer, Abonne> abonnes = new TreeMap<Integer, Abonne>();
 	private static Map<Integer, Document> documents = new TreeMap<Integer, Document>();
 
-	public static void reserver(int idAbo, int idDoc) throws PasLibreException {
+	public static void reserver(int idAbo, int idDoc) throws PasLibreException, IllegalArgumentException {
 		if (documents.containsKey(idDoc) && abonnes.containsKey(idAbo)) {
 			synchronized (documents.get(idDoc)) {
 				documents.get(idDoc).reserver(abonnes.get(idAbo));
@@ -18,7 +18,7 @@ public class Librettery {
 		}
 	}
 
-	public static void emprunter(int idAbo, int idDoc) throws PasLibreException {
+	public static void emprunter(int idAbo, int idDoc) throws PasLibreException, IllegalArgumentException {
 		if (documents.containsKey(idDoc) && abonnes.containsKey(idAbo)) {
 			synchronized (documents.get(idDoc)) {
 				documents.get(idDoc).emprunter(abonnes.get(idAbo));
@@ -29,7 +29,7 @@ public class Librettery {
 		}
 	}
 
-	public static void retour(int idDoc) throws PasLibreException {
+	public static void retour(int idDoc) throws PasLibreException, IllegalArgumentException {
 		if (documents.containsKey(idDoc)) {
 			synchronized (documents.get(idDoc)) {
 				documents.get(idDoc).rendreDispo();

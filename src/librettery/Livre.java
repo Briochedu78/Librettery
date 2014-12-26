@@ -5,12 +5,10 @@ public class Livre implements Document {
 	public int numero;
 	public Abonne abo;
 
-	@Override
 	public int numero() {
 		return this.numero;
 	}
 
-	@Override
 	public void reserver(Abonne ab) throws PasLibreException {
 		synchronized (this) {
 			if (this.abo == null)
@@ -19,7 +17,6 @@ public class Livre implements Document {
 		}
 	}
 
-	@Override
 	public void emprunter(Abonne ab) throws PasLibreException {
 		synchronized (this) {
 			if (this.abo == null)
@@ -28,7 +25,6 @@ public class Livre implements Document {
 		}
 	}
 
-	@Override
 	public void rendreDispo() {
 		synchronized (this) {
 			this.abo = null;
