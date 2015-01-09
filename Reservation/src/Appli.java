@@ -44,11 +44,7 @@ class Appli {
 				System.out.print("> ");
 				line = clavier.readLine();
 				if (line == null)
-					break;
-				numDoc = Integer.parseInt(line);
-				
-				
-				sout.println(numDoc.toString() + " " + numAbo.toString());
+					break;sout.println("retour " + line + " " + numAbo.toString());
 				
 				line = sin.readLine();
 				
