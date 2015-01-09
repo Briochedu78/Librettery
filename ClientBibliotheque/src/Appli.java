@@ -11,18 +11,15 @@ public class Appli {
 		Socket s = null;
 		Scanner sc = new Scanner(System.in);
 		int port;
-		String line, type;
-		boolean continuer = true;
+		String line;
 		while(true){
 			System.out.print("Saisissez emprunt pour un emprunt et retour pour un retour : ");
 			line = sc.nextLine();
 			if(line.equals("emprunt")){
-				type = line;
 				port = 2600;
 				break;
 			}
 			else if(line.equals("retour")){
-				type = line;
 				port = 2700;
 				break;
 			}
@@ -41,52 +38,22 @@ public class Appli {
 
 			System.out.println("Connecté au serveur " + s.getInetAddress() + ":"+ s.getPort());
 			
-			Integer numAbo;
 			
-			while(continuer) {
-				System.out.println("Veuillez entrer votre numero d'abonne");
+			while(true) {
+				
+				line = sin.readLine();
+				if (line == null)
+					break;
+				
+				System.out.println(line);
 				System.out.print("> ");
 				System.out.flush();
 				
 				line = clavier.readLine();
 				if(line == null)
 					break;
-				numAbo = Integer.parseInt(line);
 				
-				System.out.flush();
-				System.out.println("Veuillez entrer le numero de document");
-				System.out.print("> ");
-				System.out.flush();
-				line = clavier.readLine();
-				if (line == null)
-					break;
-				sout.println(type + " " + line + " " + numAbo.toString());
-				
-				line = sin.readLine();
-				
-				if (line == null) { 
-					System.out.println("Connection fermee par le serveur."); 
-					break;
-				}
-				System.out.println(line);
-				
-				if(type.equals("emprunt")){
-					do{
-						System.out.println("Le document est-il deteriore ? (O/n)");
-						System.out.print("> ");
-						System.out.flush();
-						line = sc.nextLine();
-					}while(!(line.equalsIgnoreCase("O") || line.equalsIgnoreCase("n")));
-					
-					sout.println("abime " + line);
-					line = sin.readLine();
-					if (line == null) { 
-						System.out.println("Connection fermee par le serveur."); 
-						break;
-					}
-					System.out.println(line);
-				}
-				continuer = false;
+				sout.println(line);
 			}
 		}
 		catch (IOException e) { System.err.println(e); }

@@ -25,8 +25,11 @@ public class ServiceEmprunt implements Runnable {
 			sin = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
 			sout = new PrintWriter(socket.getOutputStream(), true);
+			
+			sout.println("Veuillez entrer votre numero d'abonne");
+			sout.println("Veuillez entrer le numero de document");
 			String[] in = parse(sin.readLine());
-
+						
 			do {
 				if (!(in.length == 3)) {
 					sout.println("Envoie de donnee invalide");
@@ -36,11 +39,16 @@ public class ServiceEmprunt implements Runnable {
 
 					Librettery.emprunter(idAbo, FDocument.parse(in[1]));
 				}
-				line = sin.readLine();
-				if(line.equalsIgnoreCase("o")){
-					Librettery.rendreIndesirable(Integer.parseInt(in[2]));
-				}
 				
+				do{
+					sout.println("Le document est-il deteriore ? (O/n)");
+					line = sin.readLine();
+				}while(!(line.equalsIgnoreCase("O") || line.equalsIgnoreCase("n")));
+					line = sin.readLine();
+				if (line == null) { 
+					System.out.println("Connection fermee par le serveur."); 
+					break;
+				}
 			} while (false);
 
 		} catch (IOException e) {
@@ -50,7 +58,6 @@ public class ServiceEmprunt implements Runnable {
 		} catch (PasLibreException e) {
 			sout.println(e);
 		}
-
 		try {
 			socket.close();
 		} catch (IOException e) {
