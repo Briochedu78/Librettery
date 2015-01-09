@@ -3,11 +3,12 @@ package librettery;
 public class Abonne {
 	private int numero;
 	private String nom;
+	private int age;
 	
-	
-	public Abonne(String nom){
+	public Abonne(String nom, int age){
 		this.numero = Abonne.generateNumero();
 		this.nom = nom;
+		this.age = age;
 	}
 
 
@@ -23,5 +24,9 @@ public class Abonne {
 
 	public String getNom() {
 		return nom;
+	}
+	
+	public int getAge(){
+		return age;
 	}
 }

@@ -4,7 +4,11 @@ package librettery;
 public class Livre implements Document {
 	public int numero;
 	public Abonne abo;
-
+	
+	public Livre(int numero){
+		this.numero = numero;
+	}
+	
 	public int numero() {
 		return this.numero;
 	}
