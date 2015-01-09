@@ -1,6 +1,6 @@
 package librettery;
 
-public class Appli {
+public class AppliLibrettery {
 	
 	private static int facteur_jour = 1000;
 	
@@ -8,7 +8,7 @@ public class Appli {
 		return nbjours * facteur_jour;
 	}
 	
-	public static void main(String[] args) {
+	public static void add() {
 		String type = "li";
 		for(int i = 0; i < 10; ++i){
 			Librettery.ajouter(FDocument.buildDoc(type + (i + 1)));

@@ -11,10 +11,11 @@ public class Appli {
 		Socket s = null;
 		Scanner sc = new Scanner(System.in);
 		int port;
-		String line = sc.nextLine(), type;
+		String line, type;
 		boolean continuer = true;
 		while(true){
 			System.out.print("Saisissez emprunt pour un emprunt et retour pour un retour : ");
+			line = sc.nextLine();
 			if(line.equals("emprunt")){
 				type = line;
 				port = 2600;

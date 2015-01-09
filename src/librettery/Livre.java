@@ -8,7 +8,7 @@ public class Livre implements Document {
 	private Abonne abo;
 	private Date date_emprunt;
 	
-	private static int tempsLimite = Appli.getMilliNbJours(15);
+	private static int tempsLimite = AppliLibrettery.getMilliNbJours(15);
 	
 	public Livre(int numero){
 		this.numero = numero;
