@@ -5,6 +5,8 @@ public class ServiceEmprunt implements Runnable {
 
 	public ServiceEmprunt(Socket accept) {
 		// TODO Auto-generated constructor stub
+	
+		
 	}
 
 	public void run() {
