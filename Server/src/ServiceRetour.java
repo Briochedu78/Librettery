@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import librettery.FDocument;
 import librettery.Librettery;
 import librettery.PasLibreException;
 
@@ -35,10 +36,7 @@ public class ServiceRetour implements Runnable {
 					break;
 				}
 				else{
-					int idAbo = Integer.parseInt(in[1]),
-						idDoc = Integer.parseInt(in[2]);
-					
-					Librettery.retour(idDoc);
+					Librettery.retour(FDocument.parse(in[1]));
 				}
 			}while(false);
 			

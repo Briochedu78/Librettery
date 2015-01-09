@@ -4,54 +4,47 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import librettery.FDocument;
 import librettery.Librettery;
 import librettery.PasLibreException;
 
 public class ServiceReservation implements Runnable {
 	private Socket socket;
-	
+
 	public ServiceReservation(Socket accept) {
 		socket = accept;
 		System.out.println("Connexion effectuee");
-		
+
 	}
 
 	public void run() {
 		BufferedReader sin = null;
 		PrintWriter sout = null;
 		try {
-			sin = new BufferedReader (new InputStreamReader(socket.getInputStream ( )));
-			sout = new PrintWriter (socket.getOutputStream ( ), true);
+			sin = new BufferedReader(new InputStreamReader(
+					socket.getInputStream()));
+			sout = new PrintWriter(socket.getOutputStream(), true);
 			String[] in = parse(sin.readLine());
-			
+
 			// Ce do while permet de faire des break
-			do{
-				if(!(in.length == 3)){
+			do {
+				if (!(in.length == 3)) {
 					sout.println("Envoie de donnee invalide");
 					break;
+				} else {
+					int idAbo = Integer.parseInt(in[2]);
+					Librettery.emprunter(idAbo, FDocument.parse(in[1]));
 				}
-				if(!in[0].equals("reservation")){
-					sout.println("Ceci n'est pas une reservation");
-					break;
-				}
-				else{
-					int idAbo = Integer.parseInt(in[1]),
-						idDoc = Integer.parseInt(in[2]);
-					
-					Librettery.reserver(idAbo, idDoc);
-				}
-			}while(false);
-			
-		} 
-		catch (IOException e) {
+			} while (false);
+
+		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			sout.println(e);
 		} catch (PasLibreException e) {
 			sout.println(e);
 		}
-		
+
 		try {
 			socket.close();
 		} catch (IOException e) {

@@ -9,4 +9,8 @@ public class FDocument {
 		}
 		return null;
 	}
+	
+	public static int parse (String id){
+		return Integer.parseInt(id.substring(2));
+	}
 }
