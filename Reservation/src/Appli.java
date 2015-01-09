@@ -28,33 +28,20 @@ class Appli {
 			System.out.println("Connecté au serveur " + s.getInetAddress() + ":"+ s.getPort());
 			
 			String line;
-			Integer numAbo;
 			while(true) {
-				System.out.println("Veuillez entrer votre numero d'abonne");
+				
+				line = sin.readLine();
+				if (line == null)
+					break;
+				
+				System.out.println(line);
 				System.out.print("> ");
 				System.out.flush();
 				
 				line = clavier.readLine();
 				if(line == null)
 					break;
-				numAbo = Integer.parseInt(line);
-				
-				System.out.flush();
-				System.out.println("Veuillez entrer le numero de document");
-				System.out.print("> ");
-				line = clavier.readLine();
-				if (line == null)
-					break;sout.println("retour " + line + " " + numAbo.toString());
-				
-				line = sin.readLine();
-				
-				if (line == null) { 
-					System.out.println("Connection fermee par le serveur."); 
-					break;
-				}
-				
-				System.out.println(line);
-				break;
+				sout.println(line);
 			}
 		}
 		catch (IOException e) { System.err.println(e); }

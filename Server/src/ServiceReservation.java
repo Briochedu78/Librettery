@@ -25,7 +25,10 @@ public class ServiceReservation implements Runnable {
 					socket.getInputStream()));
 			sout = new PrintWriter(socket.getOutputStream(), true);
 			String[] in = parse(sin.readLine());
-
+			
+			sout.println("Veuillez entrer votre numero d'abonne");
+			sout.println("Veuillez entrer le numero de document");
+			
 			// Ce do while permet de faire des break
 			do {
 				if (!(in.length == 3)) {
