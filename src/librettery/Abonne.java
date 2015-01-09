@@ -7,6 +7,7 @@ public class Abonne {
 	private String nom;
 	private int age;
 	private boolean indesirable;
+	private static int num = 0;
 	
 	public Abonne(String nom, int age){
 		this.numero = Abonne.generateNumero();
@@ -16,7 +17,7 @@ public class Abonne {
 
 
 	private static int generateNumero() {
-		return (int) (Math.random() * Integer.MAX_VALUE);
+		return ++num;
 	}
 
 

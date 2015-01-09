@@ -28,7 +28,7 @@ class Appli {
 			System.out.println("Connecté au serveur " + s.getInetAddress() + ":"+ s.getPort());
 			
 			String line;
-			Integer numAbo, numDoc;
+			Integer numAbo;
 			while(true) {
 				System.out.println("Veuillez entrer votre numero d'abonne");
 				System.out.print("> ");
