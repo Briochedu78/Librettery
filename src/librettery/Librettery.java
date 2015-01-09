@@ -38,4 +38,12 @@ public class Librettery {
 			throw new IllegalArgumentException("Le document " + idDoc + " n'existe pas");
 		}
 	}
+	
+	public static void ajouter(Document d){
+		documents.put(d.numero(), d);
+	}
+	
+	public static void ajouter(Abonne a){
+		abonnes.put(a.getNumero(), a);
+	}
 }
