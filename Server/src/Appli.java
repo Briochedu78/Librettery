@@ -9,7 +9,6 @@ public class Appli {
 	
 	
 	public static void main(String[] args) {
-		AppliLibrettery.add();
 		try {
 			new ServeurReservation(portReservation).lancer();
 			System.out.println("Serveur des reservation lance sur le port " + portReservation);
