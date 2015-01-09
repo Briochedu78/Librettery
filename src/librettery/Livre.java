@@ -1,12 +1,18 @@
 package librettery;
 
+import java.util.Date;
+
 
 public class Livre implements Document {
-	public int numero;
-	public Abonne abo;
+	private int numero;
+	private Abonne abo;
+	private Date date_emprunt;
+	
+	private static int tempsLimite = AppliLibrettery.getMilliNbJours(15);
 	
 	public Livre(int numero){
 		this.numero = numero;
+		date_emprunt = new Date();
 	}
 	
 	public int numero() {
@@ -15,7 +21,7 @@ public class Livre implements Document {
 
 	public void reserver(Abonne ab) throws PasLibreException {
 		synchronized (this) {
-			if (this.abo == null)
+			if (this.abo == null || abo.estIndesirable())
 				throw new PasLibreException();
 			this.abo = ab;
 		}
@@ -23,16 +29,22 @@ public class Livre implements Document {
 
 	public void emprunter(Abonne ab) throws PasLibreException {
 		synchronized (this) {
-			if (this.abo == null)
+			if (this.abo == null || abo.estIndesirable())
 				throw new PasLibreException();
 			this.abo = ab;
 		}
 	}
 
 	public void rendreDispo() {
+		synchronized (abo){
+			if(this.date_emprunt.compareTo(new Date()) > tempsLimite){
+				abo.indesirable();
+			}
+		}
 		synchronized (this) {
 			this.abo = null;
 		}
+		
 	}
 
 }
