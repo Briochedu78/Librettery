@@ -56,6 +56,7 @@ public class Appli {
 				System.out.flush();
 				System.out.println("Veuillez entrer le numero de document");
 				System.out.print("> ");
+				System.out.flush();
 				line = clavier.readLine();
 				if (line == null)
 					break;
@@ -67,9 +68,25 @@ public class Appli {
 					System.out.println("Connection fermee par le serveur."); 
 					break;
 				}
-				
 				System.out.println(line);
-				break;
+				
+				if(type.equals("emprunt")){
+					do{
+						System.out.println("Le document est-il deteriore ? (O/n)");
+						System.out.print("> ");
+						System.out.flush();
+						line = sc.nextLine();
+					}while(!(line.equalsIgnoreCase("O") || line.equalsIgnoreCase("n")));
+					
+					sout.println("abime " + line);
+					line = sin.readLine();
+					if (line == null) { 
+						System.out.println("Connection fermee par le serveur."); 
+						break;
+					}
+					System.out.println(line);
+				}
+				continuer = false;
 			}
 		}
 		catch (IOException e) { System.err.println(e); }

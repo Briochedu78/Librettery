@@ -2,17 +2,18 @@ package librettery;
 
 import java.util.TimerTask;
 
-public class InderiableTimerTask extends TimerTask {
+public class IndesirableTimerTask extends TimerTask {
 	
 	private Abonne abo;
 	
-	public InderiableTimerTask(Abonne abo){
+	public IndesirableTimerTask(Abonne abo){
 		this.abo = abo;
 	}
 	
 	@Override
 	public void run() {
 		this.abo.desirable();
+		System.out.println("abo desirable");
 	}
 
 }

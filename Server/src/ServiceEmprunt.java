@@ -19,7 +19,8 @@ public class ServiceEmprunt implements Runnable {
 	public void run() {
 		BufferedReader sin = null;
 		PrintWriter sout = null;
-
+		String line;
+		
 		try {
 			sin = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
@@ -35,6 +36,11 @@ public class ServiceEmprunt implements Runnable {
 
 					Librettery.emprunter(idAbo, FDocument.parse(in[1]));
 				}
+				line = sin.readLine();
+				if(line.equalsIgnoreCase("o")){
+					Librettery.rendreIndesirable(Integer.parseInt(in[2]));
+				}
+				
 			} while (false);
 
 		} catch (IOException e) {

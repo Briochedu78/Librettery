@@ -46,4 +46,8 @@ public class Librettery {
 	public static void ajouter(Abonne a){
 		abonnes.put(a.getNumero(), a);
 	}
+	
+	public static void rendreIndesirable(int idAbo){
+		abonnes.get(idAbo).indesirable();
+	}
 }
