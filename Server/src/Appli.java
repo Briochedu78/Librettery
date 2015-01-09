@@ -1,5 +1,5 @@
 import java.io.IOException;
-import librettery.AppliLibrettery;;
+import librettery.AppliLibrettery;
 
 public class Appli {
 	private static int portReservation = 2500,
@@ -9,6 +9,8 @@ public class Appli {
 	
 	
 	public static void main(String[] args) {
+		AppliLibrettery.add();
+		
 		try {
 			new ServeurReservation(portReservation).lancer();
 			System.out.println("Serveur des reservation lance sur le port " + portReservation);
