@@ -41,16 +41,9 @@ public class Appli {
 
 			System.out.println("Connecté au serveur " + s.getInetAddress() + ":"+ s.getPort());
 			
-			Integer numAbo, numDoc;
+			Integer numAbo;
 			
 			while(continuer) {
-				
-				System.out.print("> ");
-				System.out.flush();
-				line = clavier.readLine();
-				if(line == null)
-					break;
-				
 				System.out.println("Veuillez entrer votre numero d'abonne");
 				System.out.print("> ");
 				System.out.flush();
@@ -66,11 +59,7 @@ public class Appli {
 				line = clavier.readLine();
 				if (line == null)
 					break;
-				
-				numDoc = Integer.parseInt(line);
-				
-				
-				sout.println(type + " " + numDoc.toString() + " " + numAbo.toString());
+				sout.println(type + " " + line + " " + numAbo.toString());
 				
 				line = sin.readLine();
 				
